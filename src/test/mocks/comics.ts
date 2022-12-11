@@ -1,7 +1,7 @@
 const comics = [
   {
-    id: 1,
-  },
-];
+    id: 1
+  }
+]
 
-export default comics;
+export default comics

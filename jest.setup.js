@@ -1,7 +1,7 @@
 import 'whatwg-fetch'
 import '@testing-library/jest-dom/extend-expect'
-import {server} from './test/server.ts'
-
+import { server } from './test/server.ts'
+import { beforeAll, afterEach, afterAll } from 'jest'
 process.env.MARVEL_API_URL = 'http://localhost/marvel/api'
 process.env.MARVEL_API_PRIVATE_KEY = 'PRIVATE_KEY'
 process.env.MARVEL_API_PUBLIC_KEY = 'PUBLIC_KEY'

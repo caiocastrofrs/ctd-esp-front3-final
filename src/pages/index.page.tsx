@@ -1,15 +1,13 @@
-import Head from "next/head";
-import BodySingle from "src/components/layouts/body/single/body-single";
-import Comic from "src/components/Comic";
-import { getComics } from "src/services/marvel/marvel.service";
-import { Comic as ComicType } from "src/components/Comic/types";
+import Head from 'next/head'
+import BodySingle from 'src/components/layouts/body/single/body-single'
+import Comic from 'src/components/Comic'
+import { getComics } from 'src/services/marvel/marvel.service'
+import { Comic as ComicType } from 'src/components/Comic/types'
 
+export async function getServerSideProps () {
+  const { data } = await getComics(3, 12)
 
-export async function getServerSideProps() {
-
-  const { data } = await getComics(3, 12); 
-
-  const { results: comics } = data;
+  const { results: comics } = data
   return {
     props: {
       comics
@@ -17,8 +15,8 @@ export async function getServerSideProps() {
   }
 }
 
-type IndexProps = {
-    comics: ComicType[],
+interface IndexProps {
+  comics: ComicType[]
 }
 
 const Index = ({ comics }: IndexProps) => {
@@ -30,11 +28,11 @@ const Index = ({ comics }: IndexProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <BodySingle title={"Comics"}>
+      <BodySingle title={'Comics'}>
         {comics && comics.map((comic: ComicType) => <Comic key={comic.id} comic={comic} />)}
       </BodySingle>
     </>
-  );
-};
+  )
+}
 
-export default Index;
+export default Index

@@ -1,9 +1,9 @@
-import type { AppProps } from "next/app";
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import LayoutGeneral from "src/components/layouts/layout-general";
-import { theme } from "src/styles/material-theme";
+import type { AppProps } from 'next/app'
+import { CssBaseline, ThemeProvider } from '@mui/material'
+import LayoutGeneral from 'src/components/layouts/layout-general'
+import { theme } from 'src/styles/material-theme'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp ({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         }
       `}</style>
     </ThemeProvider>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp

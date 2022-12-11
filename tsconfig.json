@@ -19,24 +19,23 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
     "paths": {
-      "dh-marvel/components/*": [
+      "src/components/*": [
         "components/*"
       ],
-      "dh-marvel/services/*": [
+      "src/services/*": [
         "services/*"
       ],
-      "dh-marvel/features/*": [
+      "src/features/*": [
         "features/*"
       ],
-      "dh-marvel/pages/*": [
+      "src/pages/*": [
         "pages/*"
       ],
-      "dh-marvel/styles/*": [
+      "src/styles/*": [
         "styles/*"
       ],
-      "dh-marvel/test/*": [
+      "src/test/*": [
         "test/*"
       ]
     }

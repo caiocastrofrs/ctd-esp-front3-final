@@ -1,7 +1,7 @@
 const comicsWithOffsetAndLimit = [
   {
-    id: 10,
-  },
-];
+    id: 10
+  }
+]
 
-export default comicsWithOffsetAndLimit;
+export default comicsWithOffsetAndLimit

@@ -1,28 +1,27 @@
-import * as React from "react";
-import { FC, PropsWithChildren } from "react";
-import Container, { ContainerProps } from "@mui/material/Container";
-import { Stack, Typography } from "@mui/material";
-
+import * as React from 'react'
+import { FC, PropsWithChildren } from 'react'
+import Container, { ContainerProps } from '@mui/material/Container'
+import { Stack, Typography } from '@mui/material'
 
 interface BodySingleProps extends PropsWithChildren {
-  title?: string;
-  containerProps?: ContainerProps;
+  title?: string
+  containerProps?: ContainerProps
 }
 
 const BodySingle: FC<BodySingleProps> = ({
   title,
   containerProps,
-  children,
+  children
 }: BodySingleProps) => {
   return (
     <Container maxWidth="xl" {...containerProps}>
-      <Stack flexDirection={"row"} flexWrap={"wrap"} gap={4} display={"flex"} justifyContent={"center"} alignItems={"flex-start"}>
+      <Stack flexDirection={'row'} flexWrap={'wrap'} gap={4} display={'flex'} justifyContent={'center'} alignItems={'flex-start'}>
         {title && (
           <Typography
-            variant={"h2"}
+            variant={'h2'}
             my={2}
-            width={"100%"}
-            textAlign={"center"}
+            width={'100%'}
+            textAlign={'center'}
             fontSize={28}
             fontWeight={600}
           >
@@ -32,6 +31,6 @@ const BodySingle: FC<BodySingleProps> = ({
         {children}
       </Stack>
     </Container>
-  );
-};
-export default BodySingle;
+  )
+}
+export default BodySingle
