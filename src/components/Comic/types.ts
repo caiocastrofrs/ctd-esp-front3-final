@@ -1,4 +1,4 @@
-import { Character } from '../Character/types'
+import { Character } from '../CharacterDetails/types'
 
 export interface Comic {
   id: number
