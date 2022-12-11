@@ -1,4 +1,4 @@
-import { generateAuthenticationString } from "dh-marvel/services/marvel/marvel-auth.service";
+import { generateAuthenticationString } from "src/services/marvel/marvel-auth.service";
 
 const MARVEL_API_URL = process.env.MARVEL_API_URL;
 

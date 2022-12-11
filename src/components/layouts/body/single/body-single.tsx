@@ -3,6 +3,7 @@ import { FC, PropsWithChildren } from "react";
 import Container, { ContainerProps } from "@mui/material/Container";
 import { Stack, Typography } from "@mui/material";
 
+
 interface BodySingleProps extends PropsWithChildren {
   title?: string;
   containerProps?: ContainerProps;
@@ -15,11 +16,12 @@ const BodySingle: FC<BodySingleProps> = ({
 }: BodySingleProps) => {
   return (
     <Container maxWidth="xl" {...containerProps}>
-      <Stack direction={"column"} display={"flex"} justifyContent={"center"}>
+      <Stack flexDirection={"row"} flexWrap={"wrap"} gap={4} display={"flex"} justifyContent={"center"} alignItems={"flex-start"}>
         {title && (
           <Typography
             variant={"h2"}
             my={2}
+            width={"100%"}
             textAlign={"center"}
             fontSize={28}
             fontWeight={600}

@@ -4,8 +4,8 @@ import handleCheckout, {
   validCard,
   withoutAuthorizationCard,
   withoutFundsCard,
-} from "dh-marvel/pages/api/checkout.route";
-import { CheckoutInput } from "dh-marvel/features/checkout/checkout.types";
+} from "src/pages/api/checkout.route";
+import { CheckoutInput } from "src/features/checkout/checkout.types";
 import {
   ERROR_CARD_DATA_INCORRECT,
   ERROR_CARD_WITHOUT_AUTHORIZATION,
@@ -13,7 +13,7 @@ import {
   ERROR_INCORRECT_ADDRESS,
   ERROR_METHOD_NOT_ALLOWED,
   ERROR_SERVER,
-} from "dh-marvel/services/checkout/checkout.errors";
+} from "src/services/checkout/checkout.errors";
 
 describe("Checkout", () => {
   describe("when sending a valid POST, customer and card data", () => {
