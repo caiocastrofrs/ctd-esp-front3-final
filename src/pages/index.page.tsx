@@ -3,6 +3,7 @@ import BodySingle from 'src/components/layouts/body/single/body-single'
 import Comic from 'src/components/Comic'
 import { getComics } from 'src/services/marvel/marvel.service'
 import { Comic as ComicType } from 'src/components/Comic/types'
+import { useCart } from 'contexts/useCart'
 
 export async function getServerSideProps () {
   const { data } = await getComics(3, 12)
@@ -20,6 +21,9 @@ interface IndexProps {
 }
 
 const Index = ({ comics }: IndexProps) => {
+
+  const context = useCart();
+  console.log(context);
   return (
     <>
       <Head>

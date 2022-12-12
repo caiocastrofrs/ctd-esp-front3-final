@@ -11,18 +11,17 @@ interface CharactersListProps extends PropsWithChildren {
 
 const CharactersList = ({ characters }: CharactersListProps) => {
   const getCharacterId = (endpoint: string): string => {
-    let reversedEndpoint = endpoint.split('').reverse().join('');
-    let slashPosition = reversedEndpoint.search('/');
+    const reversedEndpoint = endpoint.split('').reverse().join('')
+    const slashPosition = reversedEndpoint.search('/')
 
-    let reversedId = reversedEndpoint.slice(0 , slashPosition);
+    const reversedId = reversedEndpoint.slice(0, slashPosition)
 
-    let id = reversedId.split('').reverse().join('');
+    const id = reversedId.split('').reverse().join('')
 
-    return id;
+    return id
   }
 
-  getCharacterId("http://gateway.marvel.com/v1/public/characters/1009197")
-
+  getCharacterId('http://gateway.marvel.com/v1/public/characters/1009197')
 
   return (
     <>

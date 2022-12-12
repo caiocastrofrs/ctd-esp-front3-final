@@ -1,17 +1,16 @@
 import { PropsWithChildren } from 'react'
 
 export interface Character {
-  name: string,
-  id: number,
+  name: string
+  id: number
   thumbnail: {
-    extension: string,
+    extension: string
     path: string
-  },
-  description: string,
+  }
+  description: string
   resourceURI: string
 }
 
 export interface CharacterDetailsProps extends PropsWithChildren {
   character: Character
 }
-

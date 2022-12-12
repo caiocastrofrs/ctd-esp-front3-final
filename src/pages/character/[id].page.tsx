@@ -1,44 +1,21 @@
-import CharacterDetails from "src/components/CharacterDetails";
-import { Character, CharacterDetailsProps } from "src/components/CharacterDetails/types";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { getCharacters, getCharacter } from "src/services/marvel/marvel.service";
+import CharacterDetails from 'src/components/CharacterDetails'
+import { Character } from 'src/components/CharacterDetails/types'
+import { GetServerSideProps } from 'next'
+import { getCharacter } from 'src/services/marvel/marvel.service'
 
-const CharactersDetailsPage = ({ character }: CharacterDetailsProps) => {
+const CharactersDetailsPage = (ctx: any) => {
+  const character: Character = ctx.character
   return (
     <CharacterDetails character={character} />
   )
 }
 
-
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const { data } = await getCharacters(3,12);
-  const { results: characters } = data;
-
-  const paths = characters.map((character: Character) => {
-    return {
-      params: {
-        id: String(character.id)
-      }
-    }
-  })
-
-  return {
-    paths,
-    fallback: false
-  }
-}
-
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  const characterId = Number(ctx?.params?.id)
-
-  const character = await getCharacter(characterId)
-
+export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
+  const character = await getCharacter(ctx?.params?.id)
   return {
     props: {
       character
     }
   }
-
 }
-export default CharactersDetailsPage;
+export default CharactersDetailsPage

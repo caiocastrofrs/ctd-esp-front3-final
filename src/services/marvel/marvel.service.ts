@@ -16,6 +16,13 @@ export const getComics = async (offset?: number, limit?: number) => {
   return await fetchApi('comics', params.toString())
 }
 
+export const getCharacters = async (offset?: number, limit?: number) => {
+  const params = new URLSearchParams()
+  if (offset) params.set('offset', `${offset}`)
+  if (limit) params.set('limit', `${limit}`)
+  return await fetchApi('characters', params.toString())
+}
+
 export const getComic = async (comicId: number) => {
   const data = await fetchApi(`comics/${comicId}`)
   const results = data.data.results
@@ -39,11 +46,4 @@ export const getCharacter = async (characterId: number) => {
   const results = data.data.results
   if (results.length > 0) return results[0]
   else return null
-}
-
-export const getCharacters = async (offset?: number, limit?: number) => {
-  const params = new URLSearchParams()
-  if(offset) params.set('offset', `${offset}`)
-  if(limit) params.set('limit', `${limit}`)
-  return await fetchApi('characters', params.toString())
 }
