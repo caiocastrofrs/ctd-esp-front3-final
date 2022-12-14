@@ -11,6 +11,7 @@ export default function Document () {
       </Head>
       <body style={{ height: '100%' }}>
         <Main />
+        <div id="notify" />
         <NextScript />
       </body>
     </Html>

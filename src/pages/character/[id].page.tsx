@@ -1,12 +1,19 @@
+import { GetServerSideProps } from 'next'
+import Head from 'next/head'
+
 import CharacterDetails from 'src/components/CharacterDetails'
 import { Character } from 'src/components/CharacterDetails/types'
-import { GetServerSideProps } from 'next'
 import { getCharacter } from 'src/services/marvel/marvel.service'
 
 const CharactersDetailsPage = (ctx: any) => {
   const character: Character = ctx.character
   return (
+    <>
+      <Head>
+        <title>{character.name}</title>
+      </Head>
     <CharacterDetails character={character} />
+    </>
   )
 }
 

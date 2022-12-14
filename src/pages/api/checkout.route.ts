@@ -33,20 +33,23 @@ export default function handler (
     return
   }
   try {
-    const body: CheckoutInput = req.body
-    if (body.customer.address.address2 === invalidAddress) {
+    const body: CheckoutInput = req.body;
+
+    const { customer, card, order }: CheckoutInput = body;
+
+    if (customer?.address.address2 === invalidAddress) {
       res.status(400).json(ERROR_INCORRECT_ADDRESS)
       return
     }
-    if (body.card.number === withoutFundsCard) {
+    if (card?.number === withoutFundsCard) {
       res.status(400).json(ERROR_CARD_WITHOUT_FUNDS)
       return
     }
-    if (body.card.number === withoutAuthorizationCard) {
+    if (card?.number === withoutAuthorizationCard) {
       res.status(400).json(ERROR_CARD_WITHOUT_AUTHORIZATION)
       return
     }
-    if (body.card.number === validCard) {
+    if (card?.number === validCard) {
       res.status(200).json({ data: body })
       return
     }

@@ -6,14 +6,30 @@ import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
+import { useCart } from 'contexts/useCart'
 import { Comic as ComicType } from './types'
+
 interface ComicProps extends PropsWithChildren {
   comic: ComicType
 }
 
 export default function Comic ({ comic }: ComicProps) {
   const [description, setDescription] = useState({ text: comic.description && comic.description.slice(0, 60), isHide: true })
+  const router = useRouter();
+  const { handleProduct } = useCart();
+
+
+  const handleBuyingProcess = () => {
+    handleProduct({
+      image: `${comic.thumbnail.path}.${comic.thumbnail.extension}`,
+      productName: comic.title,
+      price: comic.price || 52
+
+    })
+    router.push("/checkout")
+  }
 
   const handleDescriptionSize = () => {
     if (!description.isHide) {
@@ -53,7 +69,7 @@ export default function Comic ({ comic }: ComicProps) {
         <Link href={`/comic/${comic.id}`} >
           <Button size="small" variant="contained">Ver detalhes</Button>
         </Link>
-        <Button size="small" variant="contained">Comprar</Button>
+        <Button size="small" variant="contained" onClick={handleBuyingProcess}>Comprar</Button>
       </CardActions>
     </Card>
   )

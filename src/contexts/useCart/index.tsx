@@ -2,12 +2,12 @@ import { useContext, createContext, PropsWithChildren, useState } from 'react';
 import { CartProductType, CartProductContextType } from './types';
 
 
-const cartContext = createContext<CartProductContextType | null>(null);
+const cartContext = createContext<CartProductContextType>({} as CartProductContextType);
 
 
 export const CartProvider = ({ children }: PropsWithChildren) => {
 
-  const [cartProduct, setCartProduct] = useState<CartProductType | null>(null);
+  const [cartProduct, setCartProduct] = useState<CartProductType>({} as CartProductType);
 
   const handleProduct = (product: CartProductType) => setCartProduct(product);
   
@@ -23,5 +23,10 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
 
 export const useCart = () => {
   const context = useContext(cartContext);
-  return context;
+  const { cartProduct, handleProduct } = context;
+
+  return {
+    cartProduct,
+    handleProduct
+  }
 }

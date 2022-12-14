@@ -1,10 +1,10 @@
 export type CartProductType = {
-  image: string,
-  productName: string,
+  image: string
+  productName: string
   price: number
 }
 
 export type CartProductContextType = {
-  cartProduct: CartProductType | null;
-  handleProduct: (product: CartProductType) => void;
+  cartProduct: CartProductType
+  handleProduct: (product: CartProductType) => void
 }

@@ -2,15 +2,31 @@ import { Container, Typography } from '@mui/material'
 import Button from '@mui/material/Button'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Comic as ComicType } from '../Comic/types'
 import { PropsWithChildren } from 'react'
+import { useRouter } from 'next/router'
+
+import { Comic as ComicType } from '../Comic/types'
 import CharactersList from '../CharacterDetails/CharactersList'
+import { useCart } from 'contexts/useCart';
 
 interface ComicDetailsProps extends PropsWithChildren {
   comic: ComicType
 }
 
 const ComicDetails = ({ comic }: ComicDetailsProps) => {
+  const router = useRouter();
+  const { handleProduct } = useCart();
+
+  const handleBuyingProcess = () => {
+    handleProduct({
+      image: `${comic.thumbnail.path}.${comic.thumbnail.extension}`,
+      productName: comic.title,
+      price: comic.price 
+
+    })
+    router.push("/checkout")
+  }
+
   return (
     <Container maxWidth="lg" sx={{
       display: 'flex',
@@ -31,7 +47,7 @@ const ComicDetails = ({ comic }: ComicDetailsProps) => {
       <Image src={`${comic.thumbnail?.path}.${comic.thumbnail?.extension}`} width="450" height="500"/>
       <Typography variant="h5">R${comic.price},00</Typography>
       {comic.stock > 0
-        ? <Button variant="contained">Comprar</Button>
+        ? <Button variant="contained" onClick={handleBuyingProcess}>Comprar</Button>
         : <Button variant="contained" disabled>Sem estoque</Button>}
       <CharactersList characters={comic.characters.items}/>
     </Container>)

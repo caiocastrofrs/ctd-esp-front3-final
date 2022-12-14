@@ -1,9 +1,15 @@
-import CheckoutForm from "src/components/CheckoutForm";
-
+import Checkout from "src/components/Checkout";
+import Head from "next/head";
 
 const  CheckoutPage = () => {
 
-  return <CheckoutForm />
+  return (
+  <>
+    <Head>
+      <title>Checkout</title>
+    </Head>
+    <Checkout />
+  </>)
 }
 
 

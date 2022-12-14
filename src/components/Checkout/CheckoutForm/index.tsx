@@ -1,16 +1,23 @@
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { FormInput } from './types'
 import { TextField, Button, FormControl, Typography } from '@mui/material'
+import { useCart } from 'contexts/useCart';
+import { formatCheckoutData } from 'utils/formatCheckoutData';
+import { sendCheckout } from 'src/services/checkout/checkout.services'; 
 
 const CheckoutForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<FormInput>()
+  const { cartProduct } = useCart();
 
-  const onSubmit: SubmitHandler<FormInput> = data => console.log(data)
+  const onSubmit: SubmitHandler<FormInput> = data => {
+    const formatedData = formatCheckoutData(data, cartProduct);
+    sendCheckout(formatedData);
+  }
 
   return (
     <>
     <FormControl component="form" onSubmit={handleSubmit(onSubmit)}
-      sx={{ width: 500, padding: 5, gap: 2 }}>
+      sx={{ width: 500, padding: 5, gap: 2, textAlign: 'center', margin: '0 auto' }}>
       <TextField label="First Name" {...register('firstName', { required: true, maxLength: 20 })} />
       {(errors.firstName != null) && <Typography sx={{ color: 'red' }}>Este campo é obrigatório</Typography>}
 
@@ -41,7 +48,7 @@ const CheckoutForm = () => {
       <TextField label="Credit Card Name" {...register('creditCardName', { required: true, minLength: 10, maxLength: 20 })} />
       {(errors.creditCardName != null) && <Typography sx={{ color: 'red' }}>Este campo é obrigatório</Typography>}
 
-      <TextField label="Expire Date" {...register('expireDate', { required: true, pattern: /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/ })} />
+      <TextField label="Expire Date" {...register('expireDate', { required: true })} />
       {(errors.expireDate != null) && <Typography sx={{ color: 'red' }}>Este campo é obrigatório</Typography>}
 
       <TextField label="CVC" {...register('cvc', { required: true, minLength: 3, maxLength: 3 })} />
