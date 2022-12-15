@@ -6,21 +6,8 @@ import { Notify } from '../Notifier';
 import { useEffect, useState } from 'react';
 
 export const FaqPage = () => {
-  const [toastStatus, setToastStatus] = useState(false);
-
-  const handleToast = () => {
-    if(!toastStatus) setToastStatus((prevState: boolean) => !prevState); 
-  }
-
-  useEffect(() => {
-    if(toastStatus) {
-      setTimeout(() => setToastStatus(false), 2000);
-    }
-  }, [toastStatus])
-
-  return(
+    return(
     <Container>
-      {toastStatus && <Notify message="teste"/>}
       <Typography variant="h4" sx={{ textAlign: 'center', margin: 5}}>Perguntas & Respostas</Typography>
       {
         faqsData.map((data: FaqsType) => {
@@ -40,7 +27,6 @@ export const FaqPage = () => {
               </AccordionDetails>
             </Accordion>)
         })}
-      <button onClick={handleToast}>clique</button>
     </Container>
   )
 }

@@ -42,7 +42,7 @@ const CheckoutForm = () => {
       <TextField label="Zip Code" {...register('zipCode', { required: true })} />
       {(errors.zipCode != null) && <Typography sx={{ color: 'red' }}>Este campo é obrigatório</Typography>}
 
-      <TextField label="Credit Card Number" {...register('creditCardNumber', { required: true, minLength: 16, maxLength: 16 })} />
+      <TextField label="Credit Card Number" {...register('creditCardNumber', { required: true, minLength: 16, maxLength: 19 })} />
       {(errors.creditCardNumber != null) && <Typography sx={{ color: 'red' }}>Este campo é obrigatório</Typography>}
 
       <TextField label="Credit Card Name" {...register('creditCardName', { required: true, minLength: 10, maxLength: 20 })} />
