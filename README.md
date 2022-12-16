@@ -1,3 +1,10 @@
+# MENSAGEM PARA O PROFESSOR
+O que falta no projeto: Testes, validações do cartão no formulário de Checkout(consequentemente não tem os toasts notificando o erro para o usuário).
+
+Tive um problema em fazer a validação, pedi ajuda aos colegas e mesmo assim não foi resolvido. Pela falta de tempo nessa semana, os testes ficaram pra trás também. Decidi enviar assim mesmo para não atrasar o senhor e também porque já não aguento mais esse projeto :sweat_smile:
+
+
+
 # Projeto final
 
 Exame Final de Frontend VI
