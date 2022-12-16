@@ -12,11 +12,11 @@ const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
     // Handle module aliases (this will be automatically configured for you soon)
-    '^dh-marvel/components/(.*)$': '<rootDir>/components/$1',
-    '^dh-marvel/features/(.*)$': '<rootDir>/features/$1',
-    '^dh-marvel/services/(.*)$': '<rootDir>/services/$1',
-    '^dh-marvel/pages/(.*)$': '<rootDir>/pages/$1',
-    '^dh-marvel/test/(.*)$': '<rootDir>/test/$1'
+    '^src/components/(.*)$': '<rootDir>/components/$1',
+    '^src/features/(.*)$': '<rootDir>/features/$1',
+    '^src/services/(.*)$': '<rootDir>/services/$1',
+    '^src/pages/(.*)$': '<rootDir>/pages/$1',
+    '^src/test/(.*)$': '<rootDir>/test/$1'
   },
   testEnvironment: 'jest-environment-jsdom',
   collectCoverageFrom: [

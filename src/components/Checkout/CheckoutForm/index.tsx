@@ -2,16 +2,32 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { FormInput } from './types'
 import { TextField, Button, FormControl, Typography } from '@mui/material'
 import { useCart } from 'contexts/useCart';
+import { useUser } from 'contexts/useUser';
 import { formatCheckoutData } from 'utils/formatCheckoutData';
 import { sendCheckout } from 'src/services/checkout/checkout.services'; 
+import { useRouter } from 'next/router';
 
 const CheckoutForm = () => {
+  const router = useRouter();
   const { register, handleSubmit, formState: { errors } } = useForm<FormInput>()
   const { cartProduct } = useCart();
+  const { handleUser } = useUser();
 
   const onSubmit: SubmitHandler<FormInput> = data => {
     const formatedData = formatCheckoutData(data, cartProduct);
     sendCheckout(formatedData);
+
+    handleUser({
+      name: formatedData.customer.name,
+      address: formatedData.customer.address.address1,
+      city: formatedData.customer.address.city,
+      state: formatedData.customer.address.state,
+      cep: formatedData.customer.address.zipCode,
+      price: formatedData.order.price
+    })
+
+    router.push("/checkout/success")
+    
   }
 
   return (

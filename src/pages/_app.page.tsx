@@ -3,7 +3,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material'
 import LayoutGeneral from 'src/components/layouts/layout-general'
 import { theme } from 'src/styles/material-theme'
 import { CartProvider } from 'contexts/useCart'
-
+import { UserProvider } from 'contexts/useUser'
 
 function MyApp ({ Component, pageProps }: AppProps) {
   return (
@@ -11,7 +11,9 @@ function MyApp ({ Component, pageProps }: AppProps) {
       <CssBaseline />
       <LayoutGeneral>
         <CartProvider>
-          <Component {...pageProps} />
+          <UserProvider>
+            <Component {...pageProps} />
+          </UserProvider>
         </CartProvider>
       </LayoutGeneral>
       <style jsx global>{`

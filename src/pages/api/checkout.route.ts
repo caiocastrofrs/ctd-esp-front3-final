@@ -30,32 +30,30 @@ export default function handler (
 ) {
   if (req.method !== 'POST') {
     res.status(405).json(ERROR_METHOD_NOT_ALLOWED)
-    return
+    return;
   }
   try {
     const body: CheckoutInput = req.body;
-
-    const { customer, card, order }: CheckoutInput = body;
-
-    if (customer?.address.address2 === invalidAddress) {
+    console.log("BODY: ",body.customer.address.address2);
+    if (body.customer.address.address2 === invalidAddress) {
       res.status(400).json(ERROR_INCORRECT_ADDRESS)
-      return
+      return;
     }
-    if (card?.number === withoutFundsCard) {
+    if (body.card.number === withoutFundsCard) {
       res.status(400).json(ERROR_CARD_WITHOUT_FUNDS)
-      return
+      return;
     }
-    if (card?.number === withoutAuthorizationCard) {
+    if (body.card.number === withoutAuthorizationCard) {
       res.status(400).json(ERROR_CARD_WITHOUT_AUTHORIZATION)
-      return
+      return;
     }
-    if (card?.number === validCard) {
+    if (body.card.number === validCard) {
       res.status(200).json({ data: body })
-      return
+      return;
     }
     res.status(400).json(ERROR_CARD_DATA_INCORRECT)
   } catch (err) {
-    console.log(err)
+    console.log("ERRO: " ,err);
     res.status(500).json(ERROR_SERVER)
   }
 }
