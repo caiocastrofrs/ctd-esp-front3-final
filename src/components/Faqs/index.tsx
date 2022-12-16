@@ -2,8 +2,6 @@ import { Accordion,AccordionSummary, Typography, AccordionDetails } from '@mui/m
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { faqsData, FaqsType } from "./faqsData"
 import { Container } from '@mui/system';
-import { Notify } from '../Notifier';
-import { useEffect, useState } from 'react';
 
 export const FaqPage = () => {
     return(
